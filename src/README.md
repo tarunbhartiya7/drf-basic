@@ -6,4 +6,4 @@ t.save()
 
 This will insert a record in the db
 
-# In django there are two modules - web and rest
+# In django there are two modules - web and rest 
