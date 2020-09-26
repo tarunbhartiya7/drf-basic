@@ -10,13 +10,22 @@ from rest_framework.mixins import ListModelMixin, CreateModelMixin, RetrieveMode
 from rest_framework.generics import GenericAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
 
 from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
-
+from rest_framework.pagination import PageNumberPagination, LimitOffsetPagination
 # ReadOnlyModelViewSet - get all and get single
+
+
+class StudentPagination(PageNumberPagination):
+    """
+    Defining class level pagination and overiding global one
+    """
+    page_size = 1
 
 
 class StudentViewSet(ModelViewSet):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
+    # pagination_class = StudentPagination
+    pagination_class = LimitOffsetPagination
 
 
 # Non Primary key based operations
